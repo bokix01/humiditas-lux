@@ -31,17 +31,12 @@ const int SERVER_PORT = 80;                   // Server hosting port
 WiFiClient client;
 
 // Components
-const int NUM_LEDS 25;
-const int LED_PIN 5;
+#define NUM_LEDS 25
+#define LED_PIN 5
 
 Adafruit_NeoPixel matrix = Adafruit_NeoPixel(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-void setup() {
-  Serial.begin(115200);
-
-  matrix.begin();
-  matrix.show();
-  
+void connect() {
   // Attempt to connect to Wi-Fi network
   Serial.print("Connecting to ");
   Serial.println(SSID);
@@ -72,6 +67,15 @@ void setup() {
   }
 }
 
+void setup() {
+  Serial.begin(115200);
+
+  matrix.begin();
+  matrix.show();
+  
+  connect();
+}
+
 void loop() {
   if (client.connected()) {
     while (client.available()) {
@@ -85,7 +89,7 @@ void loop() {
       // Check for message content
       if (message == "on") {
         for (int i = 0; i < NUM_LEDS; i++) {
-          matrix.setPixelColor(i, matrix.Color(31, 31, 31));
+          matrix.setPixelColor(i, matrix.Color(127, 127, 127));
         }
         matrix.show();
         Serial.println("Action: Turning ON");
@@ -98,7 +102,8 @@ void loop() {
       }
     }
   } else {
-    Serial.println("Disconnected from server");
-    delay(1000);
+    Serial.println("Disconnected from server, trying again...");
+    delay(500);
+    connect();
   }
 }
