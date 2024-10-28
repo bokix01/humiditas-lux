@@ -30,8 +30,8 @@ const int SERVER_PORT = 80;                 // Server hosting port
 WiFiServer server(SERVER_PORT);
 
 // Components
-const int PHOTORESISTOR_PIN 2;
-const int DHT11_PIN 5;
+const int PHOTORESISTOR_PIN = 2;
+const int DHT11_PIN = 5;
 
 DHT11 dht11(DHT11_PIN);
 
@@ -47,11 +47,7 @@ REAL WORLD VALUES MAY DIFFER!!!
 CHANGE THEM ACCORDINGLY!!!
 */
 
-void setup() {
-  Serial.begin(9600);
-
-  pinMode(PHOTORESISTOR_PIN, INPUT);
-  
+void connect() {
   // Attempt to connect to Wi-Fi network
   Serial.print("Connecting to ");
   Serial.println(SSID);
@@ -77,6 +73,14 @@ void setup() {
   // Start the server
   server.begin();
   Serial.println("Server started");
+}
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(PHOTORESISTOR_PIN, INPUT);
+  
+  connect();
 }
 
 void loop() {
@@ -111,7 +115,7 @@ void loop() {
         client.println("on");
         Serial.println("Message sent to client.");
         criteriaMet = true;
-      } else if (criteriaMet) {
+      } else if (!(light <= max_allowed_light && humidity >= max_allowed_humidity) && criteriaMet) {
         Serial.println("All criteria are no longer met. Turning off the LEDs...");
         client.println("off");
         Serial.println("Message sent to client.");
@@ -122,5 +126,9 @@ void loop() {
     }
     client.stop();
     Serial.println("Client disconnected");
+  }
+
+  if (!WiFi.localIP()) {
+    connect();
   }
 }
