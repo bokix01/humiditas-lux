@@ -1,5 +1,5 @@
 # Humiditas Lux
-Innovative system for illumination of road marks when humidity is high (usually when it's raining or there is fog) in combination with dark at night.
+Innovative system for illumination of road marks when humidity is high (usually when it's raining or there is fog) in combination with darkness at night.
 
 ## Components
 
