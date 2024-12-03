@@ -1,0 +1,17 @@
+@import 'root.css';
+
+html {
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--primary-background-color);
+    color: var(--primary-color);
+    font-family: Verdana, sans-serif;
+    font-size: 1em;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}

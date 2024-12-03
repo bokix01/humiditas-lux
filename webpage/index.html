@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humiditas Lux</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/slideshow.css">
+
+    <script src="scripts/slideshow.js" defer></script>
+</head>
+<body>
+<header>
+    <div>
+        <h1>HUMIDITAS LUX</h1>
+        <p>
+            Innovative system for illumination of road marks when humidity is high (usually when it's raining or there
+            is fog) in combination with dark at night.
+            <br>
+            <br>
+            This innovation would help with visibility of road marks in such conditions in places where it's most needed
+            (e.g. lane merging).
+        </p>
+    </div>
+
+    <nav>
+        <a href="#awards"><i class="fa-solid fa-award"></i> Awards</a>
+        <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+        <a href="#source"><i class="fa-solid fa-code"></i> Source</a>
+    </nav>
+</header>
+
+<main>
+    <section data-aos="fade-in">
+        <div>
+            <h2>The Idea <i class="fa-regular fa-lightbulb"></i></h2>
+            <p>
+                The idea of project initialization is having multiple lights installed into road marks which will get
+                triggered by only 1 station with sensors for night and humidity.
+            </p>
+            <p>
+                These lights would be connected via <i class="fa-solid fa-wifi"></i> Wi-Fi or <i
+                    class="fa-brands fa-bluetooth-b"></i> Bluetooth technology.
+            </p>
+        </div>
+
+        <img src="images/humiditas-lux-light.png" alt="No image">
+    </section>
+
+    <section data-aos="fade-in">
+        <img src="" alt="">
+
+        <div>
+            <h2>Environment <i class="fa-solid fa-seedling"></i></h2>
+            <p>
+                Humiditas Lux lights are designed to only turn on when triggered in necessary conditions. This targeted
+                approach conserves energy and minimizes light pollution, protecting natural ecosystems and reducing
+                disturbances to wildlife.
+            </p>
+            <p>
+                By embedding our lights directly into the road, we also create a durable and low-maintenance solution
+                that requires fewer resources over time.
+            </p>
+            <p>
+                Solar panel usage (in version 2) are not only using sun as a power source and extending light lifespan
+                but also reducing battery waste for overall safer environment.
+            </p>
+        </div>
+    </section>
+
+    <section id="awards" data-aos="fade-in">
+        <div>
+            <h2>Awards <i class="fa-solid fa-award"></i></h2>
+            <p>
+                This project was shown on many exhibitions, some of which gave awards for its functionality and
+                innovation.
+            </p>
+            <p>
+                Displayed awards came from exhibition in Croatia, United Kingdom and Romania.
+            </p>
+        </div>
+
+        <div class="slideshow-container">
+            <div class="slideshow fade">
+                <img src="images/romania-special.jpg" alt="Award">
+            </div>
+
+            <div class="slideshow fade">
+                <img src="images/romania-gold.jpg" alt="Award">
+            </div>
+
+            <div class="slideshow fade">
+                <img src="images/romania-silver.jpg" alt="Award">
+            </div>
+
+            <div class="slideshow fade">
+                <img src="images/inova-2024.jpg" alt="Award">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </section>
+
+    <section id="source" data-aos="fade-in">
+        <div>
+            <p>Wi-Fi & Humiditas Lux station connection settings</p>
+            <pre>
+                <code class="language-cpp">
+    const char* SSID = "citywifi";              // Wi-Fi SSID
+    const char* PASSWORD = "password1234";      // Wi-Fi Password
+    const char* SERVER_IP = "192.168.X.X";      // Server IP address
+    const int SERVER_PORT = 80;                 // Server hosting port
+                </code>
+            </pre>
+
+            <p>Humidity and light sensor trigger settings</p>
+            <pre>
+                <code class="language-cpp">
+    const int max_allowed_light = 1900;         // 1900 and below is night
+    const int max_allowed_humidity = 75;        // 75% and above is rain/fog
+                </code>
+            </pre>
+        </div>
+
+        <div>
+            <h2>Source Code <i class="fa-solid fa-code-branch"></i></h2>
+            <p>
+                Humiditas Lux project is designed to be easy to set up and use.
+            </p>
+            <p>
+                To find out more about the project code structure visit the <i class="fa-brands fa-github"></i>
+                <a href="https://github.com/bokix01/humiditas-lux/" target="_blank">GitHub repository</a>
+            </p>
+        </div>
+    </section>
+
+    <section id="contact" data-aos="fade-in">
+        <form action="scripts/mail.php" method="POST">
+            <h2>Contact <i class="fa-solid fa-envelope"></i> (not working right now)</h2>
+            <div>
+                <input type="text" name="first_name" placeholder="First name" required>
+                <input type="text" name="last_name" placeholder="Last name" required>
+            </div>
+
+            <input type="email" name="email" placeholder="Contact email" required>
+            <textarea placeholder="Your message" name="message" rows="10" required></textarea>
+
+            <input type="submit">
+        </form>
+    </section>
+</main>
+
+<footer>
+    &copy; 2024. All rights reserved. Humiditas Lux by Borna Krpan
+</footer>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+</body>
+</html>
